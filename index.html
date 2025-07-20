@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Özkan very delişiş</title>
+  <script defer data-domain="ozkansayfa" src="https://plausible.io/js/script.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow-y: scroll;
+      scroll-snap-type: y mandatory;
+      background-color: black;
+      font-family: 'Arial Black', sans-serif;
+    }
+
+    header {
+      position: fixed;
+      top: 10px;
+      width: 100%;
+      text-align: center;
+      z-index: 999;
+      color: white;
+      font-size: 18px;
+      font-family: 'Arial Black';
+    }
+
+    section {
+      height: 100vh;
+      width: 100%;
+      scroll-snap-align: start;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background-color 0.5s ease;
+      position: relative;
+    }
+
+    section img {
+      max-height: 90vh;
+      max-width: 90vw;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(255,255,255,0.2);
+    }
+
+    .audio-controls {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      z-index: 999;
+    }
+
+    .audio-controls button {
+      background: white;
+      color: black;
+      border: none;
+      padding: 5px 10px;
+      margin: 2px;
+      font-size: 14px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    .arrow-hint {
+      position: fixed;
+      top: 50px;
+      right: 15px;
+      color: white;
+      font-size: 18px;
+      animation: fadeOut 5s forwards;
+      text-align: right;
+    }
+
+    .arrow-hint::before {
+      content: '⬇️';
+      display: block;
+      font-size: 24px;
+      margin-bottom: 5px;
+    }
+
+    @keyframes fadeOut {
+      0% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { opacity: 0; display: none; }
+    }
+
+    .credit {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      color: white;
+      font-size: 16px;
+      opacity: 0.5;
+    }
+  </style>
+</head>
+<body>
+  <header>Özkan very delişiş</header>
+  <div class="audio-controls">
+    <button onclick="playAudio()">▶️</button>
+    <button onclick="pauseAudio()">⏸️</button>
+    <button onclick="restartAudio()">⏮️</button>
+    <button onclick="nextTrack()">⏭️</button>
+  </div>
+
+  <div class="arrow-hint">Müziği buradan başlatabilirsin</div>
+
+  <!-- 8 Fotoğraf -->
+  <section style="background-color:#222;"><img src="foto1.jpeg" /></section>
+  <section style="background-color:#444;"><img src="foto2.jpeg" /></section>
+  <section style="background-color:#333;"><img src="foto3.jpeg" /></section>
+  <section style="background-color:#111;"><img src="foto4.jpeg" /></section>
+  <section style="background-color:#222;"><img src="foto5.jpeg" /></section>
+  <section style="background-color:#444;"><img src="foto6.jpeg" /></section>
+  <section style="background-color:#333;"><img src="foto7.jpeg" /></section>
+  <section style="background-color:#111;">
+    <img src="foto8.jpeg" />
+    <div class="credit">@seyozkan</div>
+  </section>
+
+  <audio id="bg-audio" autoplay>
+    <source src="song1.mp3" type="audio/mpeg" />
+  </audio>
+
+  <script>
+    const audio = document.getElementById("bg-audio");
+    let currentTrack = 1;
+
+    function playAudio() {
+      audio.play();
+    }
+
+    function pauseAudio() {
+      audio.pause();
+    }
+
+    function restartAudio() {
+      audio.currentTime = 0;
+      audio.play();
+    }
+
+    function nextTrack() {
+      currentTrack = currentTrack === 1 ? 2 : 1;
+      audio.src = `song${currentTrack}.mp3`;
+      audio.play();
+    }
+  </script>
+</body>
+</html>
